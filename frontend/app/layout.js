@@ -1,13 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
+import Header from "../components/header";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
   subsets: ["latin"],
 });
 
@@ -19,14 +14,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/logo.png" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${inter.variable} antialiased`}>
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <footer className="py-8 px-4 border-t">
+          <div className="max-w-6xl mx-auto flex justify-center items-center">
+            <p className="text-stone-500 text-sm">
+              Made with 💖 by Abhijeet Palanki.
+            </p>
+          </div>
+        </footer>
       </body>
     </html>
   );
