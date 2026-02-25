@@ -4,9 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import UserDropdown from "./user-dropdown";
+import { checkUser } from "@/lib/check-user";
 
 const Header = async () => {
-  const user = null; // Replace with actual user data from Clerk
+  const user = await checkUser();
 
   return (
     <header className="fixed top-0 w-full border-b border-stone-200 bg-stone-50/80 backdrop-blur-md z-50 supports-backdrop-blur:bg-stone-50/60">
