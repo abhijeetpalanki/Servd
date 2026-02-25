@@ -1,10 +1,14 @@
-import { Cookie, Refrigerator } from "lucide-react";
+import { Cookie, Refrigerator, Sparkles } from "lucide-react";
 import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 import Link from "next/link";
 import Image from "next/image";
+
+import { checkUser } from "@/lib/check-user";
+
 import { Button } from "./ui/button";
 import UserDropdown from "./user-dropdown";
-import { checkUser } from "@/lib/check-user";
+import PricingModal from "./pricing-modal";
+import { Badge } from "./ui/badge";
 
 const Header = async () => {
   const user = await checkUser();
@@ -33,7 +37,21 @@ const Header = async () => {
         </div>
         <div className="flex items-center space-x-4">
           <SignedIn>
-            {/* How to Cook? */}
+            {user ? (
+              <PricingModal subscriptionTier={user.subscriptionTier}>
+                <Badge
+                  variant="outline"
+                  className={`flex h-8 px-3 gap-1.5 rounded-full text-xs font-semibold transition-all ${user.subscriptionTier === "pro" ? "bg-linear-to-r from-red-600 to bg-amber-600 text-white border-none shadow-sm" : "bg-stone-200/50 text-stone-600 border-stone-200 cursor-pointer hover:bg-stone-300/50 hover:border-stone-300"}`}
+                >
+                  <Sparkles
+                    className={`h-3 w-3 ${user.subscriptionTier === "pro" ? "text-white fill-white/20" : "text-stone-500"}`}
+                  />
+                  <span>
+                    {user.subscriptionTier === "pro" ? "Pro Chef" : "Free Plan"}
+                  </span>
+                </Badge>
+              </PricingModal>
+            ) : null}
             <UserDropdown />
           </SignedIn>
 
