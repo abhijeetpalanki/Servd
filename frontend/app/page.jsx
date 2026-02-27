@@ -77,7 +77,7 @@ export default async function Home() {
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className="w-3 h-3 fill-orange-500 text-orange-500"
+                            className="w-3 h-3 fill-red-500 text-red-500"
                           />
                         ))}
                       </div>
@@ -113,7 +113,7 @@ export default async function Home() {
               </div>
               <Badge
                 variant="secondary"
-                className="bg-transparent text-orange-500 text-sm uppercase tracking-wider font-medium border-none"
+                className="bg-transparent text-red-500 text-sm uppercase tracking-wider font-medium border-none"
               >
                 {stat.label}
               </Badge>
@@ -177,7 +177,7 @@ export default async function Home() {
                 <div className="flex gap-6 items-start">
                   <Badge
                     variant="outline"
-                    className="text-6xl font-bold text-orange-500 border-none bg-transparent p-0 h-auto"
+                    className="text-6xl font-bold text-red-500 border-none bg-transparent p-0 h-auto"
                   >
                     {item.step}
                   </Badge>
