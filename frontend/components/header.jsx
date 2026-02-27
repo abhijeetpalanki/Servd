@@ -9,6 +9,7 @@ import { Button } from "./ui/button";
 import UserDropdown from "./user-dropdown";
 import PricingModal from "./pricing-modal";
 import { Badge } from "./ui/badge";
+import HowToCookModal from "./how-to-cook-modal";
 
 const Header = async () => {
   const user = await checkUser();
@@ -37,6 +38,8 @@ const Header = async () => {
         </div>
         <div className="flex items-center space-x-4">
           <SignedIn>
+            <HowToCookModal />
+
             {user ? (
               <PricingModal subscriptionTier={user.subscriptionTier}>
                 <Badge
